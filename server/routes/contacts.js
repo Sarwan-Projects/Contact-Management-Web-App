@@ -36,7 +36,6 @@ router.get('/', async (req, res) => {
             data: contacts
         });
     } catch (error) {
-        console.error('Error fetching contacts:', error);
         res.status(500).json({
             success: false,
             message: 'Server error while fetching contacts'
@@ -75,8 +74,6 @@ router.post('/', contactValidation, async (req, res) => {
             data: contact
         });
     } catch (error) {
-        console.error('Error creating contact:', error);
-        
         // Handle mongoose validation errors
         if (error.name === 'ValidationError') {
             const messages = Object.values(error.errors).map(err => err.message);
@@ -114,8 +111,6 @@ router.delete('/:id', async (req, res) => {
             message: 'Contact deleted successfully'
         });
     } catch (error) {
-        console.error('Error deleting contact:', error);
-        
         // Handle invalid ObjectId
         if (error.kind === 'ObjectId') {
             return res.status(400).json({
