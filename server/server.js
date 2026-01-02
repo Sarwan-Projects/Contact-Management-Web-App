@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000'],
+    origin: ['https://contact-master-pro.vercel.app', 'http://localhost:5173', 'http://localhost:3000'],
     credentials: true
 }));
 app.use(express.json());

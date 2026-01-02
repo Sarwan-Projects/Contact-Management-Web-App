@@ -3,7 +3,7 @@ import ContactForm from './components/ContactForm'
 import ContactList from './components/ContactList'
 import Toast from './components/Toast'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = 'https://contact-management-web-app.onrender.com/api'
 
 function App() {
   const [contacts, setContacts] = useState([])

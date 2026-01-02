@@ -1,176 +1,82 @@
-# Contact Management Web App
+# Contact Manager
 
-A full-stack MERN application for managing contacts with a modern, responsive UI built with Tailwind CSS.
+A simple contact management app I built to learn the MERN stack. Nothing fancy, just a clean way to store and manage contacts.
 
-## 🚀 Live Demo
-- **Frontend**: [To be updated after deployment]
-- **Backend API**: [To be updated after deployment]
+## Live Demo
 
-## 📁 Project Structure
+- Frontend: https://contact-master-pro.vercel.app
+- Backend: https://contact-management-web-app.onrender.com
+
+## What it does
+
+- Add contacts with name, email, phone, and optional message
+- View all your contacts in a nice list
+- Delete contacts you don't need
+- Sort by newest, oldest, or alphabetically
+- Dark/light mode because why not
+
+## Tech I used
+
+- React + Vite for the frontend
+- Tailwind CSS for styling
+- Node.js + Express for the API
+- MongoDB for storing data
+
+## Project structure
 
 ```
-contact-management-app/
-├── client/                     # React Frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ContactForm.jsx   # Form with validation
-│   │   │   ├── ContactList.jsx   # Contacts display
-│   │   │   ├── ContactCard.jsx   # Individual contact card
-│   │   │   └── Toast.jsx         # Notification component
-│   │   ├── App.jsx               # Main app component
-│   │   ├── index.css             # Tailwind imports
-│   │   └── main.jsx              # Entry point
-│   ├── tailwind.config.js
-│   └── package.json
+├── client/          # React frontend
+│   └── src/
+│       ├── components/
+│       │   ├── ContactForm.jsx
+│       │   ├── ContactList.jsx
+│       │   ├── ContactCard.jsx
+│       │   └── Toast.jsx
+│       └── App.jsx
 │
-├── server/                     # Node.js + Express Backend
-│   ├── config/
-│   │   └── db.js                 # MongoDB connection
-│   ├── models/
-│   │   └── Contact.js            # Mongoose schema
-│   ├── routes/
-│   │   └── contacts.js           # API routes
-│   ├── server.js                 # Express server
-│   └── package.json
-│
-└── README.md
+└── server/          # Express backend
+    ├── config/db.js
+    ├── models/Contact.js
+    ├── routes/contacts.js
+    └── server.js
 ```
 
-## 🛠️ Tech Stack
+## API endpoints
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React.js 18 (Vite) |
-| Styling | Tailwind CSS 3.4 |
-| Backend | Node.js + Express.js |
-| Database | MongoDB Atlas |
-| Validation | express-validator |
-| State | React useState |
+| Method | Route | What it does |
+|--------|-------|--------------|
+| GET | /api/contacts | Get all contacts |
+| POST | /api/contacts | Add a contact |
+| DELETE | /api/contacts/:id | Remove a contact |
 
-## ✅ Features Implemented
-
-### Core Requirements
-- [x] Contact Form - Name (required), Email (valid), Phone (required), Message (optional)
-- [x] Client-side validation with error messages
-- [x] POST API to store contact data
-- [x] GET API to fetch stored contacts
-- [x] MongoDB schema with validation
-- [x] Display contacts in list without page reload
-- [x] Responsive layout for all devices
-- [x] Submit button disabled when form is invalid
-
-### Bonus Features
-- [x] Delete contact with confirmation
-- [x] Success/error toast notifications
-- [x] Reusable components (ContactCard, Toast, ContactForm, ContactList)
-- [x] Basic sorting (newest, oldest, by name)
-- [x] Dark/Light mode toggle
-
-## 🔌 API Documentation
-
-### Base URL
-```
-http://localhost:5000/api
-```
-
-### Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/contacts | Fetch all contacts |
-| POST | /api/contacts | Create new contact |
-| DELETE | /api/contacts/:id | Delete a contact |
-
-### Create Contact
-```http
-POST /api/contacts
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "phone": "1234567890",
-  "message": "Optional message"
-}
-```
-
-### Response Format
-```json
-{
-  "success": true,
-  "data": { ... }
-}
-```
-
-## 🗄️ Database Schema
-
-```javascript
-{
-  name: { type: String, required: true, maxlength: 100 },
-  email: { type: String, required: true, match: /email-regex/ },
-  phone: { type: String, required: true, match: /phone-regex/ },
-  message: { type: String, maxlength: 500 },
-  createdAt: { type: Date, default: Date.now }
-}
-```
-
-## 🚀 Local Development
-
-### Prerequisites
-- Node.js v14+
-- MongoDB Atlas account
-
-### Installation
+## Running locally
 
 ```bash
-# Clone repository
-git clone https://github.com/Sarwan-Projects/Contact-Management-Web-App.git
-cd Contact-Management-Web-App
+# Backend
+cd server
+npm install
+npm start
 
-# Install backend dependencies
-cd server && npm install
-
-# Install frontend dependencies
-cd ../client && npm install
+# Frontend (new terminal)
+cd client
+npm install
+npm run dev
 ```
 
-### Running Locally
+Backend runs on port 5000, frontend on 5173.
 
-```bash
-# Terminal 1 - Backend
-cd server && npm start
+## Contact schema
 
-# Terminal 2 - Frontend
-cd client && npm run dev
+```js
+{
+  name: String,      // required
+  email: String,     // required, validated
+  phone: String,     // required
+  message: String,   // optional
+  createdAt: Date
+}
 ```
-
-## 🌐 Deployment
-
-### Backend on Render
-1. Go to render.com → New → Web Service
-2. Connect GitHub repository
-3. Settings:
-   - Root Directory: `server`
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-4. Environment Variables:
-   - `MONGODB_URI`: Your MongoDB connection string
-   - `NODE_ENV`: production
-
-### Frontend on Vercel
-1. Go to vercel.com → New Project
-2. Import GitHub repository
-3. Settings:
-   - Root Directory: `client`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-
-### Post-Deployment
-Update API_URL in `client/src/App.jsx` with your Render backend URL.
-
-## 👨‍💻 Author
-
-**Sarwan**
 
 ---
-*Built for interview assessment - January 2025*
+
+Made by Sarwan
