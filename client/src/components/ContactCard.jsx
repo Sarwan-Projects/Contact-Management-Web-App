@@ -39,7 +39,11 @@ function ContactCard({ contact, onDelete, delay, darkMode, theme }) {
 
   return (
     <div 
-      className={`flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-3 sm:p-4 ${theme.cardInner} rounded-xl border transition-all duration-200 animate-slide-in`}
+      className={`flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-4 rounded-xl border transition-all duration-300 animate-slide-in ${
+        darkMode 
+          ? 'bg-slate-700/30 border-slate-600/50 hover:border-blue-500/50 hover:bg-slate-700/50' 
+          : 'bg-purple-50/50 border-purple-200/50 hover:border-purple-400/50 hover:bg-purple-50'
+      }`}
       style={{ animationDelay: `${delay}ms` }}
     >
       {/* Avatar */}
@@ -49,12 +53,16 @@ function ContactCard({ contact, onDelete, delay, darkMode, theme }) {
       
       {/* Contact Info */}
       <div className="flex-1 min-w-0 w-full sm:w-auto">
-        <h3 className={`${theme.text} font-semibold mb-1 sm:mb-2 text-sm sm:text-base`}>{contact.name}</h3>
+        <h3 className={`font-semibold mb-1 sm:mb-2 text-sm sm:text-base transition-colors duration-500 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+          {contact.name}
+        </h3>
         
         <div className="flex flex-col sm:flex-row flex-wrap gap-1 sm:gap-x-4 sm:gap-y-1 mb-2">
           <a 
             href={`mailto:${contact.email}`} 
-            className={`text-xs sm:text-sm ${theme.textSecondary} hover:text-blue-400 transition-colors flex items-center gap-1.5 truncate`}
+            className={`text-xs sm:text-sm transition-colors flex items-center gap-1.5 truncate ${
+              darkMode ? 'text-slate-400 hover:text-blue-400' : 'text-gray-600 hover:text-purple-600'
+            }`}
           >
             <span>✉️</span>
             <span className="truncate">{contact.email}</span>
@@ -62,7 +70,9 @@ function ContactCard({ contact, onDelete, delay, darkMode, theme }) {
           
           <a 
             href={`tel:${contact.phone}`} 
-            className={`text-xs sm:text-sm ${theme.textSecondary} hover:text-blue-400 transition-colors flex items-center gap-1.5`}
+            className={`text-xs sm:text-sm transition-colors flex items-center gap-1.5 ${
+              darkMode ? 'text-slate-400 hover:text-blue-400' : 'text-gray-600 hover:text-purple-600'
+            }`}
           >
             <span>📱</span>
             {contact.phone}
@@ -70,12 +80,18 @@ function ContactCard({ contact, onDelete, delay, darkMode, theme }) {
         </div>
         
         {contact.message && (
-          <p className={`text-xs sm:text-sm ${theme.textSecondary} italic ${darkMode ? 'bg-slate-800/50' : 'bg-purple-50'} px-3 py-2 rounded-lg border-l-2 ${darkMode ? 'border-blue-500' : 'border-purple-400'} my-2`}>
+          <p className={`text-xs sm:text-sm italic px-3 py-2 rounded-lg border-l-2 my-2 transition-colors duration-500 ${
+            darkMode 
+              ? 'text-slate-400 bg-slate-800/50 border-blue-500' 
+              : 'text-gray-600 bg-purple-100/50 border-purple-400'
+          }`}>
             "{contact.message}"
           </p>
         )}
         
-        <span className={`text-xs ${theme.textMuted}`}>{formatDate(contact.createdAt)}</span>
+        <span className={`text-xs transition-colors duration-500 ${darkMode ? 'text-slate-500' : 'text-gray-400'}`}>
+          {formatDate(contact.createdAt)}
+        </span>
       </div>
       
       {/* Delete Action */}
@@ -91,7 +107,11 @@ function ContactCard({ contact, onDelete, delay, darkMode, theme }) {
             </button>
             <button 
               onClick={() => setShowConfirm(false)}
-              className={`px-3 py-1.5 ${darkMode ? 'bg-slate-600 hover:bg-slate-500' : 'bg-gray-200 hover:bg-gray-300'} ${darkMode ? 'text-white' : 'text-gray-700'} text-xs font-medium rounded-lg transition-colors`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                darkMode 
+                  ? 'bg-slate-600 hover:bg-slate-500 text-white' 
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+              }`}
             >
               No
             </button>
@@ -99,7 +119,11 @@ function ContactCard({ contact, onDelete, delay, darkMode, theme }) {
         ) : (
           <button 
             onClick={() => setShowConfirm(true)}
-            className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg hover:bg-red-500/20 ${theme.textSecondary} hover:text-red-400 transition-all text-sm sm:text-base`}
+            className={`w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-lg transition-all text-sm sm:text-base ${
+              darkMode 
+                ? 'hover:bg-red-500/20 text-slate-400 hover:text-red-400' 
+                : 'hover:bg-red-100 text-gray-400 hover:text-red-500'
+            }`}
             title="Delete contact"
           >
             🗑️

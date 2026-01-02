@@ -93,16 +93,16 @@ function ContactForm({ onSubmit, darkMode, theme }) {
   }
 
   return (
-    <div className={`${theme.card} backdrop-blur-sm rounded-2xl p-4 sm:p-6 border transition-colors duration-300`}>
+    <div className={`${theme.card} backdrop-blur-sm rounded-2xl p-4 sm:p-6 border transition-colors duration-500`}>
       <div className="mb-4 sm:mb-6">
-        <h2 className={`text-lg sm:text-xl font-semibold ${theme.text} mb-1`}>Add New Contact</h2>
-        <p className={`${theme.textSecondary} text-sm`}>Fill in the details below</p>
+        <h2 className={`text-lg sm:text-xl font-semibold ${theme.cardText} mb-1 transition-colors duration-500`}>Add New Contact</h2>
+        <p className={`${darkMode ? 'text-slate-400' : 'text-gray-500'} text-sm transition-colors duration-500`}>Fill in the details below</p>
       </div>
       
       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
         {/* Name Field */}
         <div>
-          <label htmlFor="name" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2`}>
+          <label htmlFor="name" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2 transition-colors duration-500`}>
             Name <span className="text-red-400">*</span>
           </label>
           <input
@@ -124,7 +124,7 @@ function ContactForm({ onSubmit, darkMode, theme }) {
 
         {/* Email Field */}
         <div>
-          <label htmlFor="email" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2`}>
+          <label htmlFor="email" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2 transition-colors duration-500`}>
             Email <span className="text-red-400">*</span>
           </label>
           <input
@@ -146,7 +146,7 @@ function ContactForm({ onSubmit, darkMode, theme }) {
 
         {/* Phone Field */}
         <div>
-          <label htmlFor="phone" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2`}>
+          <label htmlFor="phone" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2 transition-colors duration-500`}>
             Phone <span className="text-red-400">*</span>
           </label>
           <input
@@ -168,7 +168,7 @@ function ContactForm({ onSubmit, darkMode, theme }) {
 
         {/* Message Field */}
         <div>
-          <label htmlFor="message" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2`}>
+          <label htmlFor="message" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-gray-700'} mb-2 transition-colors duration-500`}>
             Message <span className={`${darkMode ? 'text-slate-500' : 'text-gray-400'} text-xs font-normal`}>(optional)</span>
           </label>
           <textarea
@@ -178,7 +178,7 @@ function ContactForm({ onSubmit, darkMode, theme }) {
             onChange={handleChange}
             placeholder="Enter your message..."
             rows="3"
-            className={`w-full px-4 py-3 ${theme.input} border rounded-lg focus:outline-none focus:ring-2 ${theme.inputFocus} focus:border-transparent transition-all duration-300 ${darkMode ? 'hover:border-slate-500' : 'hover:border-purple-300'} resize-none`}
+            className={`w-full px-4 py-3 ${theme.input} border rounded-lg focus:outline-none focus:ring-2 ${theme.inputFocus} focus:border-transparent transition-all duration-500 ${darkMode ? 'hover:border-slate-500' : 'hover:border-purple-300'} resize-none`}
           />
         </div>
 
@@ -186,7 +186,7 @@ function ContactForm({ onSubmit, darkMode, theme }) {
         <button 
           type="submit" 
           disabled={!isFormValid() || submitting}
-          className={`w-full py-3 sm:py-3.5 px-6 bg-gradient-to-r ${theme.button} text-white font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0`}
+          className={`w-full py-3 sm:py-3.5 px-6 bg-gradient-to-r ${theme.button} text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0`}
         >
           {submitting ? (
             <>

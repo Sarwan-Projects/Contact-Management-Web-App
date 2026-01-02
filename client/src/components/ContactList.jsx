@@ -3,19 +3,29 @@ import ContactCard from './ContactCard'
 function ContactList({ contacts, onDelete, loading, darkMode, theme }) {
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 sm:py-16">
-        <div className={`w-10 h-10 border-3 ${darkMode ? 'border-slate-600 border-t-blue-500' : 'border-purple-200 border-t-purple-500'} rounded-full spinner mb-4`}></div>
-        <p className={theme.textSecondary}>Loading contacts...</p>
+      <div className="flex flex-col items-center justify-center py-16">
+        <div className={`w-10 h-10 border-3 rounded-full spinner mb-4 ${
+          darkMode ? 'border-slate-600 border-t-blue-500' : 'border-purple-200 border-t-purple-500'
+        }`}></div>
+        <p className={`transition-colors duration-500 ${darkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+          Loading contacts...
+        </p>
       </div>
     )
   }
 
   if (contacts.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-center px-4">
+      <div className="flex flex-col items-center justify-center py-16 text-center px-4">
         <div className="text-5xl sm:text-6xl mb-4 opacity-80">📭</div>
-        <h3 className={`text-base sm:text-lg font-semibold ${theme.text} mb-2`}>No contacts yet</h3>
-        <p className={`${theme.textSecondary} text-sm`}>Add your first contact using the form</p>
+        <h3 className={`text-base sm:text-lg font-semibold mb-2 transition-colors duration-500 ${
+          darkMode ? 'text-white' : 'text-gray-800'
+        }`}>
+          No contacts yet
+        </h3>
+        <p className={`text-sm transition-colors duration-500 ${darkMode ? 'text-slate-400' : 'text-gray-500'}`}>
+          Add your first contact using the form
+        </p>
       </div>
     )
   }
